@@ -1,0 +1,58 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  basicTimeStep 32
+}
+Viewpoint {
+  orientation -0.25 0.72 0.64 0.99
+  position -6.13 -3.40 6.97
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+}
+
+# --- OBSTACLES ---
+SolidBox {
+  translation -2.0 -1.0 0.25
+  size 3 0.5 0.5
+  name "obs_1"
+}
+SolidBox {
+  translation 1.0 1.5 0.25
+  size 0.5 3 0.5
+  name "obs_2"
+}
+
+# --- ROBOT & SENSORS ---
+E-puck {
+  translation -4.0 0.0 0.02
+  rotation 0 0 1 0
+  name "e-puck"
+  controller "a_robot_controller"
+  turretSlot [
+    Compass {
+      name "compass"
+    }
+    GPS {
+      name "gps"
+    }
+    Lidar {
+      name "lidar"
+      horizontalResolution 360
+      fieldOfView 3.14
+      numberOfLayers 1
+      minRange 0.05
+      maxRange 8
+    }
+  ]
+}
