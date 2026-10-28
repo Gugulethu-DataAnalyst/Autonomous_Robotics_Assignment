@@ -1,31 +1,31 @@
 ## Component B: Ethics, Risk, and Responsible Autonomy
 
 ### 1. Bias and Reliability Risks in Sensor Data, Simulation Assumptions, and Learned Models
-Sensor Noise and Environmental Divergence: Webots LiDAR and GPS sensors operate under deterministic, idealised Gaussian noise models[cite: 3]. In real-world field conditions, optical degradation (e.g., dust, lens flare), multipath GPS reflections in urban canyons, and acoustic interference significantly corrupt range estimates.
-Simulated-to-Real (Sim2Real) Transfer Gap: The simulated environment assumes rigid-body dynamics, uniform surface friction, and instant packet delivery over V2V mesh channels[cite: 3]. Real hardware exhibits mechanical backlash, wheel slip, battery voltage decay, and erratic network dropouts.
-Dataset Bias in Learned Models: The neural network steering model trained on clean, bounded state distributions risks catastrophic failure when exposed to out-of-distribution (OOD) corner cases, such as unmodeled dynamic obstacles or complete swarm dispersion.
+Sensor Noise and Environmental Divergence: The Webots LiDAR and GPS sensors operate under deterministic, idealised Gaussian noise models. In real-world field conditions, optical degradation (such as dust, and lens flare) multipath GPS reflections in urban landscapes, and interference significantly corrupt range estimates.
+Simulated-to-Real (Sim2Real) Transfer Gap: The simulated environment assumes a rigid-body dynamics, uniform surface friction, and instant packet delivery over V2V mesh channels. Real hardware exhibits mechanical backlash, wheel slip, battery voltage decay, and erratic network dropouts.
+Dataset Bias in Learned Models: The neural network steering model trained on clean, bounded state distributions risks failure when exposed to out-of-distribution (OOD) corner cases, such as unmodeled dynamic obstacles or complete swarm dispersion.
 
 ----
 
 ### 2. Transparency and Explainability Challenges in Neural-Network-Based Robotic Decision-Making
-The Black-Box Dilemma: Deep neural networks map sensor features to control actions through non-linear latent transformations. In safety-critical navigation, black-box architectures fail to provide interpretable rationales for why a specific control vector was chosen.
-Explainable AI (XAI) Mitigation Strategies: To achieve trustworthy autonomy, swarm decision-making must integrate interpretable hybrid architectures—combining neural network action predictors with explicit safety filters (e.g., Control Barrier Functions) and feature attribution tools (e.g., SHAP/LIME) to audit decision weights prior to motor actuation.
+The Black-Box Dilemma: Deep neural networks map sensor features to control actions through non-linear latent transformations. In safety-critical navigation, black-box architectures may fail to provide interpretable rationales for why a specific control vector was chosen.
+Explainable AI (XAI) Mitigation Strategies: To achieve trustworthy autonomy swarm decision-making must integrate interpretable hybrid architectures that combine neural network action predictors with explicit safety filters (such as Control Barrier Functions) and feature attribution tools ( such as SHAP/LIME) to audit decision weights prior to motor actuation.
 
 ----
 
 ### 3. Risks Associated with Autonomous Decision-Making in Safety-Critical or Human-Shared Environments
-Unpredictable Emergent Swarm Behaviors: While decentralized Reynolds rules enforce separation[cite: 3], dense multi-agent clusters can exhibit unmodeled chaotic fluid dynamics, unintended bottlenecking, or collective deadlocks when operating alongside unpredictable human pedestrians.
+Unpredictable Emergent Swarm Behaviors: While decentralized Reynolds rules enforce separation, dense multi-agent clusters can exhibit unmodeled chaotic fluid dynamics, unintended bottlenecking, or collective deadlocks when operating alongside unpredictable human pedestrians.
 Physical Safety and Force Limitations: Autonomous mobile robots operating in human proximity must enforce strict kinematic velocity bounds, active collision-avoidance overrides, and fail-safe hardware kill-switches to prevent mechanical impact hazards.
 
 ----
 
 ### 4. Fault Tolerance, Robustness, and Failure-Mode Mitigation Strategies
-Swarm Agent Dropouts & Communication Loss: In decentralized V2V topologies, the loss of an agent (e.g., battery depletion or hardware fault) is gracefully handled as nearby neighbors dynamically recalculate center-of-mass and alignment vectors without system crash[cite: 3].
-Graceful Degradation and Fail-Safe Fallbacks: If high-level neural or swarm control modes fail or experience packet corruption, the agent reverts to a deterministic, low-level reactive obstacle-avoidance state (e.g., Braitenberg wall-following) to guarantee safe stopping.
+Swarm Agent Dropouts & Communication Loss: In decentralized V2V topologies, the loss of an agent (such as battery depletion or hardware fault) is gracefully handled as nearby neighbours dynamically recalculate centre-of-mass and alignment vectors without system crash[cite: 3].
+Graceful Degradation and Fail-Safe Fallbacks: If high-level neural or swarm control modes fail or experience packet corruption, the agent reverts to a deterministic, low-level reactive obstacle-avoidance state (such Braitenberg wall-following) to guarantee safe stopping.
 
 ----
 
 ### 5. Responsible AI and Robotics Deployment within the South African Context
-Infrastructure and Environmental Adaptations: Deploying autonomous robotic systems in South Africa (e.g., underground mining inspection, agricultural monitoring, or logistics in informal urban settlements) requires resilience against severe environmental stressors, dust accumulation, non-standard terrain, and intermittent network connectivity.
+Infrastructure and Environmental Adaptations: Deploying autonomous robotic systems in South Africa (underground mining inspection, agricultural monitoring, or logistics in informal urban settlements) requires resilience against severe environmental stressors, dust accumulation, non-standard terrain, and intermittent network connectivity.
 Socio-Economic Impacts and Job Displacement: Industrial automation must balance operational efficiency with social responsibility. Autonomous deployments should prioritize human-assistive augmentation (cobotics) and upskilling local workforces in system maintenance, rather than direct labor displacement.
 Regulatory Compliance and Ethical Alignment: Systems must comply with emerging national data privacy laws (POPIA) regarding camera/spatial data capture in public spaces, while adhering to international safety frameworks (ISO 13482 for personal care and service robots).
